@@ -60,7 +60,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             // inserts the new node
         } // if
     } // insertItem
-    // ADD DUP CHECK AFTER SEARCH IS MADE
+    // ADD EMPTY CHECK AFTER DELETE IS MADE
 
 
 /**
@@ -135,7 +135,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         currentPos = head;
     } // print
 
-    public void reverse() {
+    public void reverseList() {
         if (head != null) { // empty list check
             NodeType<T> temp = new NodeType<T>();
             currentPos = head;
@@ -152,5 +152,34 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             head = currentPos; // assigns new node for head
         } // if
     } // reverse
+
+    public void printReverse() {
+        NodeType<T> temp = new NodeType<T>();
+        temp = head;
+        if (head == null) { // empty
+            System.out.println("");
+        } else { // general case
+            while (temp.next != null) {
+                temp = temp.next;
+            } // while
+            // traverses to end of list
+
+            System.out.print("The reverse list is: ");
+            while (temp.back != null) {
+                System.out.print(temp.info  + " ");
+                temp = temp.back;
+            } // while
+            System.out.println(temp.info  + " ");
+        } // if
+        currentPos = head;
+
+
+
+
+
+
+    } // printReverse
+
+
 
 } // SortedLinkedList

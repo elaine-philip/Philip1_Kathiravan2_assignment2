@@ -102,6 +102,7 @@ public class DoublyLinkedListDriver {
                         listI.insertItem(val);
                         System.out.print("The list is : ");
                         listI.print();
+                        listI.printReverse();
                     } else if (isDouble) {
                         listI.print();
                         System.out.print("Enter a number to insert: ");
@@ -110,6 +111,7 @@ public class DoublyLinkedListDriver {
                         listD.insertItem(val);
                         System.out.print("The list is : ");
                         listD.print();
+                        listD.printReverse();
                     } else if (isString) {
                         listS.print();
                         System.out.print("Enter a number to insert: ");
@@ -118,25 +120,35 @@ public class DoublyLinkedListDriver {
                         listS.insertItem(val);
                         System.out.print("The list is : ");
                         listS.print();
-                    } // if
+                        listS.printReverse();
+                     } // if
                     // prints original list, inserts item, and prints new list
                 } else if (command.equals("r")) {
                     System.out.print("The original list: ");
                     if (isInt) {
                         listI.print();
                         System.out.print("The reversed list: ");
-                        listI.reverse();
+                        listI.reverseList();
                         listI.print();
                     } else if (isDouble) {
                         listD.print();
                         System.out.print("The reversed list: ");
-                        listD.reverse();
+                        listD.reverseList();
                         listD.print();
                     } else if (isString) {
                         listS.print();
                         System.out.print("The reversed list: ");
-                        listS.reverse();
+                        listS.reverseList();
                         listS.print();
+                    } // if
+                } else if (command.equals("t")) {
+
+                    if (isInt) {
+                        listI.printReverse();
+                    } else if (isDouble) {
+                        listD.printReverse();
+                    } else if (isString) {
+                        listS.printReverse();
                     } // if
 
                 } else if (command.equals("q")) {
