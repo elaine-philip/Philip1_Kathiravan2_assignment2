@@ -111,7 +111,7 @@ public class DoublyLinkedListDriver {
                         listI.print();
                         listI.printReverse();
                     } else if (isDouble) {
-                        listI.print();
+                        listD.print();
                         System.out.print("Enter a number to insert: ");
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
@@ -143,7 +143,7 @@ public class DoublyLinkedListDriver {
                         listI.print();
                         listI.printReverse();
                     } else if (isDouble) {
-                        listI.print();
+                        listD.print();
                         System.out.print("Enter a number to delete: ");
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
@@ -185,7 +185,7 @@ public class DoublyLinkedListDriver {
                         listI.print();
                         listI.printReverse();
                     } else if (isDouble) {
-                        listI.print();
+                        listD.print();
                         System.out.print("Enter the lower bound: ");
                         scanCom = new Scanner(System.in);
                         double lower = scanCom.nextDouble();
@@ -203,7 +203,7 @@ public class DoublyLinkedListDriver {
                         listD.print();
                         listD.printReverse();
                     } else if (isString) {
-                        listI.print();
+                        listS.print();
                         System.out.print("Enter the lower bound: ");
                         scanCom = new Scanner(System.in);
                         String lower = scanCom.next();
