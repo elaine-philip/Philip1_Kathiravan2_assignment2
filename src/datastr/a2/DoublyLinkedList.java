@@ -141,42 +141,35 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         length--;
     }
 
-/**
-    public void deleteItem(T item) {
-        currentPos = head;
-
-        if (head == null) { //empty check
-            System.out.println("You cannot delete from an empty list");
-            //return;
+    public void deleteSubsection(T lowerBound, T upperBound) {
+        if (head == null) {
+            return;
         }
 
-        while (currentPos != null && currentPos.next.info.compareTo(item) == 0) {
+        currentPos = head;
+        while (currentPos != null) {
+            if ((currentPos.info.compareTo(lowerBound) >= 0)
+            && (currentPos.info.compareTo(upperBound) <= 0) ) {
+                // This node's value is within the range to be deleted
+                if (currentPos == head) {
+                    // Node to delete is the head node
+                    head = head.next;
+                    if (head != null) {
+                        head.back = null;
+                    }
+                } else {
+                    // Node to delete is not the head node
+                    currentPos.back.next = currentPos.next;
+                    if (currentPos.next != null) {
+                        currentPos.next.back = currentPos.back;
+                    }
+                }
+            }
             currentPos = currentPos.next;
         }
-
-        if (this.search(item) <= 0) {
-            System.out.println("The item is not present in the list");
-//            return;
-        }
-
-        if (currentPos.back == null) { // Deleting the head node
-            head = currentPos.next;
-            if (head != null) {
-                head.back = null;
-            }
-        } else if (currentPos.next == null) { // Deleting the tail node
-            currentPos.back.next = null;
-        } else { // Deleting a node in between
-            currentPos.back.next = currentPos.next;
-            currentPos.next.back = currentPos.back;
-        }
-
-        length--;
     }
-*/
 
-
-        public int search(T item) {
+    public int search(T item) {
         if (this.head == null) { // empty check
             return 0;
         } else {

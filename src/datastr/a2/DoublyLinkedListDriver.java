@@ -34,20 +34,27 @@ public class DoublyLinkedListDriver {
             DoublyLinkedList<Double> listD = new DoublyLinkedList<Double>();
             DoublyLinkedList<String> listS = new DoublyLinkedList<String>();
 
+            DoublyLinkedList<Integer> listICopy = new DoublyLinkedList<Integer>();
+            DoublyLinkedList<Double> listDCopy = new DoublyLinkedList<Double>();
+            DoublyLinkedList<String> listSCopy = new DoublyLinkedList<String>();
+
             if (isInt) {
                 while(scan.hasNextInt()) {
                     int itemInt = scan.nextInt();
                     listI.insertItem(itemInt);
+                    listICopy.insertItem(itemInt);
                 } // while
             } else if (isDouble) {
                 while(scan.hasNextDouble()) {
                     double itemDouble = scan.nextDouble();
                     listD.insertItem(itemDouble);
+                    listDCopy.insertItem(itemDouble);
                 } // while
             } else if (isString) {
                 while(scan.hasNext()) {
                     String itemString = scan.next();
                     listS.insertItem(itemString);
+                    listSCopy.insertItem(itemString);
                 } // while
             } // if
             // adds values from input file to list
@@ -123,7 +130,7 @@ public class DoublyLinkedListDriver {
                         listS.printReverse();
                      } // if
                     // prints original list, inserts item, and prints new list
-                }else if (command.equals("d")) {
+                } else if (command.equals("d")) {
                     System.out.print("The list is : ");
 
                     if (isInt) {
@@ -155,6 +162,66 @@ public class DoublyLinkedListDriver {
                         listS.printReverse();
                      } // if
                     // prints original list, deletes item, and prints new list
+                } else if (command.equals("b")) {
+                    System.out.print("The list is : ");
+
+                    if (isInt) {
+                        listI.print();
+                        System.out.print("Enter the lower bound: ");
+                        scanCom = new Scanner(System.in);
+                        int lower = scanCom.nextInt();
+                        System.out.print("Enter the upper bound: ");
+                        scanCom = new Scanner(System.in);
+                        int upper = scanCom.nextInt();
+                        System.out.print("The original list: ");
+                        if(listI.length() == 0) {
+                            listI.print();
+                        } else {
+                            listICopy.print();
+                        }
+
+                        listI.deleteSubsection(lower, upper);
+                        System.out.print("The modified list: ");
+                        listI.print();
+                        listI.printReverse();
+                    } else if (isDouble) {
+                        listI.print();
+                        System.out.print("Enter the lower bound: ");
+                        scanCom = new Scanner(System.in);
+                        double lower = scanCom.nextDouble();
+                        System.out.print("Enter the upper bound: ");
+                        scanCom = new Scanner(System.in);
+                        double upper = scanCom.nextDouble();
+                        System.out.print("The original list: ");
+                        if(listD.length() == 0) {
+                            listD.print();
+                        } else {
+                            listDCopy.print();
+                        }
+                        listD.deleteSubsection(lower, upper);
+                        System.out.print("The modified list: ");
+                        listD.print();
+                        listD.printReverse();
+                    } else if (isString) {
+                        listI.print();
+                        System.out.print("Enter the lower bound: ");
+                        scanCom = new Scanner(System.in);
+                        String lower = scanCom.next();
+                        System.out.print("Enter the upper bound: ");
+                        scanCom = new Scanner(System.in);
+                        String  upper = scanCom.next();
+                        System.out.print("The original list: ");
+                        if(listS.length() == 0) {
+                            listS.print();
+                        } else {
+                            listSCopy.print();
+                        }
+                        listS.deleteSubsection(lower, upper);
+                        System.out.print("The modified list: ");
+                        listS.print();
+                        listS.printReverse();
+                     } // if
+                    // prints original list, deletes subsection, and prints new list
                 } else if (command.equals("r")) {
                     System.out.print("The original list: ");
                     if (isInt) {
