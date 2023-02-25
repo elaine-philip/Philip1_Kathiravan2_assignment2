@@ -123,6 +123,38 @@ public class DoublyLinkedListDriver {
                         listS.printReverse();
                      } // if
                     // prints original list, inserts item, and prints new list
+                }else if (command.equals("d")) {
+                    System.out.print("The list is : ");
+
+                    if (isInt) {
+                        listI.print();
+                        System.out.print("Enter a number to delete: ");
+                        scanCom = new Scanner(System.in);
+                        int val = scanCom.nextInt();
+                        listI.deleteItem(val);
+                        System.out.print("The list is : ");
+                        listI.print();
+                        listI.printReverse();
+                    } else if (isDouble) {
+                        listI.print();
+                        System.out.print("Enter a number to delete: ");
+                        scanCom = new Scanner(System.in);
+                        double val = scanCom.nextDouble();
+                        listD.deleteItem(val);
+                        System.out.print("The list is : ");
+                        listD.print();
+                        listD.printReverse();
+                    } else if (isString) {
+                        listS.print();
+                        System.out.print("Enter a number to delete: ");
+                        scanCom = new Scanner(System.in);
+                        String val = scanCom.next();
+                        listS.deleteItem(val);
+                        System.out.print("The list is : ");
+                        listS.print();
+                        listS.printReverse();
+                     } // if
+                    // prints original list, deletes item, and prints new list
                 } else if (command.equals("r")) {
                     System.out.print("The original list: ");
                     if (isInt) {

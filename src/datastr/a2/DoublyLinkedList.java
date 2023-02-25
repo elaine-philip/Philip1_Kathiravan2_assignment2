@@ -64,33 +64,119 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
 
 /**
+
     public void deleteItem(T item){
         currentPos = head;
         if (head == null) { // empty check
             System.out.println("You cannot delete from an empty list");
-        } else if (this.getLength() == 1) { // one item check
+            return;
+        }
+        if (this.length() == 1) { // one item check
             if (currentPos.info.compareTo(item) == 0) {
                 head = null;
             } // if
             // makes list empty
-        } else if (this.searchItem(item) <= 0) {
+        } else if (this.search(item) <= 0) {
             System.out.println("The item is not present in the list");
+            return;
         } else if (currentPos.info.compareTo(item) == 0) { // first item check
             head = currentPos.next;
-        } else { // general case
+            if(head != null) {
+                head.back = null;
+            }
+        }
+        //   while (currentPos != null && currentPos.next.info.compareTo(item) == 0) {
+        //  currentPos = currentPos.next;
+        // }
+
+        if ((this.length() > 1) && currentPos.next == null ) { //last item check
+            currentPos = null;
+            //currentPos.back.next = null;
+        }
+        else { // general case
             while (currentPos.next != null) {
+// && currentPos.next.info.compareTo(item) == -1
                 if (currentPos.next.info.compareTo(item) == 0) {
                     currentPos.next = currentPos.next.next;
+
+//                    currentPos.back.next = currentPos.next;
+//                    currentPos.next.back = currentPos.back;
                     break;
                 } else {
                     currentPos = currentPos.next;
                 } // if
             } // while
         } // if
+        length--;
     } // deleteItem
 */
 
-    public int search(T item) {
+    public void deleteItem(T item) {
+        currentPos = head;
+        if (head == null) { // empty check
+            System.out.println("You cannot delete from an empty list");
+            return;
+        }
+
+        if (currentPos.info.compareTo(item) == 0) { // first item check
+            head = currentPos.next;
+            if (head != null) {
+                head.back = null;
+            }
+            length--;
+            return;
+        }
+        currentPos = head.next;
+        while (currentPos != null && !currentPos.info.equals(item)) {
+            currentPos = currentPos.next;
+        }
+        if (currentPos == null) { // item not found check
+            System.out.println("The item is not present in the list");
+            return;
+        }
+        currentPos.back.next = currentPos.next;
+        if (currentPos.next != null) {
+            currentPos.next.back = currentPos.back;
+        }
+        length--;
+    }
+
+/**
+    public void deleteItem(T item) {
+        currentPos = head;
+
+        if (head == null) { //empty check
+            System.out.println("You cannot delete from an empty list");
+            //return;
+        }
+
+        while (currentPos != null && currentPos.next.info.compareTo(item) == 0) {
+            currentPos = currentPos.next;
+        }
+
+        if (this.search(item) <= 0) {
+            System.out.println("The item is not present in the list");
+//            return;
+        }
+
+        if (currentPos.back == null) { // Deleting the head node
+            head = currentPos.next;
+            if (head != null) {
+                head.back = null;
+            }
+        } else if (currentPos.next == null) { // Deleting the tail node
+            currentPos.back.next = null;
+        } else { // Deleting a node in between
+            currentPos.back.next = currentPos.next;
+            currentPos.next.back = currentPos.back;
+        }
+
+        length--;
+    }
+*/
+
+
+        public int search(T item) {
         if (this.head == null) { // empty check
             return 0;
         } else {
@@ -172,12 +258,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             System.out.println(temp.info  + " ");
         } // if
         currentPos = head;
-
-
-
-
-
-
     } // printReverse
 
 
