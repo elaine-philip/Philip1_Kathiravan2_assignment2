@@ -121,7 +121,7 @@ public class DoublyLinkedListDriver {
                         listD.printReverse();
                     } else if (isString) {
                         listS.print();
-                        System.out.print("Enter a number to insert: ");
+                        System.out.print("Enter a string to insert: ");
                         scanCom = new Scanner(System.in);
                         String val = scanCom.next();
                         listS.insertItem(val);
@@ -139,27 +139,33 @@ public class DoublyLinkedListDriver {
                         scanCom = new Scanner(System.in);
                         int val = scanCom.nextInt();
                         listI.deleteItem(val);
-                        System.out.print("The list is : ");
-                        listI.print();
-                        listI.printReverse();
+                        if(listI.length() != 0) {
+                            System.out.print("The list is : ");
+                            listI.print();
+                            listI.printReverse();
+                        }
                     } else if (isDouble) {
                         listD.print();
                         System.out.print("Enter a number to delete: ");
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
                         listD.deleteItem(val);
-                        System.out.print("The list is : ");
-                        listD.print();
-                        listD.printReverse();
+                        if(listD.length() != 0) {
+                            System.out.print("The list is : ");
+                            listD.print();
+                            listD.printReverse();
+                        }
                     } else if (isString) {
                         listS.print();
-                        System.out.print("Enter a number to delete: ");
+                        System.out.print("Enter a string to delete: ");
                         scanCom = new Scanner(System.in);
                         String val = scanCom.next();
                         listS.deleteItem(val);
-                        System.out.print("The list is : ");
-                        listS.print();
-                        listS.printReverse();
+                        if(listS.length() != 0) {
+                            System.out.print("The list is : ");
+                            listS.print();
+                            listS.printReverse();
+                        }
                      } // if
                     // prints original list, deletes item, and prints new list
                 } else if (command.equals("b")) {
