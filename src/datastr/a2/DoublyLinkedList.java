@@ -63,54 +63,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     // ADD EMPTY CHECK AFTER DELETE IS MADE
 
 
-/**
-
-    public void deleteItem(T item){
-        currentPos = head;
-        if (head == null) { // empty check
-            System.out.println("You cannot delete from an empty list");
-            return;
-        }
-        if (this.length() == 1) { // one item check
-            if (currentPos.info.compareTo(item) == 0) {
-                head = null;
-            } // if
-            // makes list empty
-        } else if (this.search(item) <= 0) {
-            System.out.println("The item is not present in the list");
-            return;
-        } else if (currentPos.info.compareTo(item) == 0) { // first item check
-            head = currentPos.next;
-            if(head != null) {
-                head.back = null;
-            }
-        }
-        //   while (currentPos != null && currentPos.next.info.compareTo(item) == 0) {
-        //  currentPos = currentPos.next;
-        // }
-
-        if ((this.length() > 1) && currentPos.next == null ) { //last item check
-            currentPos = null;
-            //currentPos.back.next = null;
-        }
-        else { // general case
-            while (currentPos.next != null) {
-// && currentPos.next.info.compareTo(item) == -1
-                if (currentPos.next.info.compareTo(item) == 0) {
-                    currentPos.next = currentPos.next.next;
-
-//                    currentPos.back.next = currentPos.next;
-//                    currentPos.next.back = currentPos.back;
-                    break;
-                } else {
-                    currentPos = currentPos.next;
-                } // if
-            } // while
-        } // if
-        length--;
-    } // deleteItem
-*/
-
     public void deleteItem(T item) {
         currentPos = head;
         if (head == null) { // empty check
@@ -169,7 +121,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     } // deleteSubsection
 
-/**
     public void swapAlternate() {
         if (head == null || head.next == null) {
             return; // do nothing for empty list or list with only one item
@@ -181,6 +132,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         while (curr != null && curr.next != null) {
             NodeType<T> nextNode = curr.next;
             NodeType<T> temp = nextNode.next;
+
             nextNode.next = curr;
             curr.back = nextNode;
             curr.next = temp;
@@ -197,158 +149,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             }
 
             prev = curr;
-            curr = curr.next;
-
-
-            if (curr != null && curr.next != null && curr.next.next != null) {
-                // swap two nodes
-                prev.next.next = curr.next;
-                curr.next.back = prev.next;
-            } else if (curr != null && curr.next != null) {
-                // swap last two nodes
-                prev.next = curr.next;
-                curr.next.back = prev;
-                curr.next.next = curr;
-                curr.back = curr.next;
-            }
-
-// Add extra check to prevent infinite loop
-            if (curr != null && curr.next != null && curr.next.next != null) {
-                prev.next.next = curr.next;
-                curr.next.back = prev.next;
-            } else if (curr != null && curr.next != null) {
-                prev.next = curr.next;
-                curr.next.back = prev;
-            }
+            curr = temp;
         }
         head.back = null;
-    }
+    } // swapAlternate
 
-    public void swapAlternate() {
-        if (head == null || head.next == null) {
-            return; // do nothing for empty list or list with only one item
-        }
-
-        NodeType<T> prev = null;
-        NodeType<T> curr = head;
-
-        while (curr != null && curr.next != null) {
-            NodeType<T> nextNode = curr.next;
-            NodeType<T> temp = nextNode.next;
-            nextNode.next = curr;
-            curr.back = nextNode;
-            curr.next = temp;
-
-            if (temp != null) {
-                temp.back = curr;
-            }
-
-            if (prev == null) {
-                head = nextNode;
-            } else {
-                prev.next = nextNode;
-                nextNode.back = prev;
-            }
-
-            prev = curr;
-            curr = curr.next;
-
-
-            if (curr != null && curr.next != null && curr.next.next != null) {
-                // swap two nodes
-                prev.next.next = curr.next;
-                curr.next.back = prev.next;
-            } else if (curr != null && curr.next != null) {
-                // swap last two nodes
-                   prev.next = curr.next;
-                   curr.next.back = prev;
-                   curr.next.next = curr;
-                   curr.back = curr.next;
-/**
-                if (curr.next != null) {
-                    NodeType<T> lastNode = curr.next;
-                    lastNode.back = prev;
-                    prev.next = lastNode;
-                    curr.next = null;
-                    lastNode.next = curr;
-                    curr.back = lastNode;
-                    }
-
-            }
-*/
-public void swapAlternate() {
-    if (head == null || head.next == null) {
-        return; // do nothing for empty list or list with only one item
-    }
-
-    NodeType<T> prev = null;
-    NodeType<T> curr = head;
-
-    while (curr != null && curr.next != null) {
-        NodeType<T> nextNode = curr.next;
-        NodeType<T> temp = nextNode.next;
-
-        nextNode.next = curr;
-        curr.back = nextNode;
-        curr.next = temp;
-
-        if (temp != null) {
-            temp.back = curr;
-        }
-
-        if (prev == null) {
-            head = nextNode;
-        } else {
-            prev.next = nextNode;
-            nextNode.back = prev;
-        }
-
-        prev = curr;
-        curr = temp;
-    }
-    head.back = null;
-}
-
-/**
-
-    public void swapAlternate() {
-    if (head == null || head.next == null) {
-        return; // do nothing for empty list or list with only one item
-    }
-
-    NodeType<T> prev = null;
-    NodeType<T> curr = head;
-
-    // Reverse the list
-    reverseList();
-
-    // Iterate through the list and swap alternate nodes
-    while (curr != null && curr.next != null) {
-        NodeType<T> nextNode = curr.next;
-        NodeType<T> temp = nextNode.next;
-        nextNode.next = curr;
-        curr.back = nextNode;
-        curr.next = temp;
-
-        if (temp != null) {
-            temp.back = curr;
-        }
-
-        if (prev == null) {
-            head = nextNode;
-        } else {
-            prev.next = nextNode;
-            nextNode.back = prev;
-        }
-
-        prev = curr;
-        curr = curr.next;
-    }
-
-    // Reverse the list again to restore the original order
-    reverseList();
-}
-*/
 
     public int search(T item) {
         if (this.head == null) { // empty check
@@ -437,5 +242,4 @@ public void swapAlternate() {
     } // printReverse
 
 
-
-} // SortedLinkedList
+} // DoublyLinkedList
