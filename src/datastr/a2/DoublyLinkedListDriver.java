@@ -222,7 +222,59 @@ public class DoublyLinkedListDriver {
                         listS.printReverse();
                      } // if
                     // prints original list, deletes subsection, and prints new list
-                } else if (command.equals("r")) {
+                }
+
+
+                else if (command.equals("s")) {
+                    System.out.print("The original list: ");
+                    if (isInt) {
+/**                        if(listI.length() == 0) {
+                            listI.print();
+                        } else {
+                            listICopy.print();
+                        }
+*/
+                        listI.print();
+                        listI.swapAlternate();
+                        System.out.print("The modified list: ");
+                        listI.print();
+                        if(listI.length() != 2) {
+                            listI.printReverse();
+                        }
+                    } else if (isDouble) {
+/**                        if(listD.length() == 0) {
+                            listD.print();
+                        } else {
+                            listDCopy.print();
+                        }
+*/
+                        listD.print();
+                        listD.swapAlternate();
+                        System.out.print("The modified list: ");
+                        listD.print();
+                        if(listD.length() != 2) {
+                            listD.printReverse();
+                        }
+                    } else if (isString) {
+/**
+                        if(listS.length() == 0) {
+                            listS.print();
+                        } else {
+                            listSCopy.print();
+                        }
+*/
+                        listS.print();
+                        listS.swapAlternate();
+                        System.out.print("The modified list: ");
+                        listS.print();
+                        if(listS.length() != 2) {
+                            listS.printReverse();
+                        }
+                    } // if
+                    // prints original list, swaps alternate values, and prints new list
+                }
+
+                else if (command.equals("r")) {
                     System.out.print("The original list: ");
                     if (isInt) {
                         listI.print();
